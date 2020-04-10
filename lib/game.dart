@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'pertanyaan.dart';
+import 'jawaban.dart';
 
 class Game extends StatefulWidget {
   String nama;
@@ -9,7 +11,8 @@ class Game extends StatefulWidget {
 }
 
 class _GameState extends State<Game> {
-  List _apalah = [
+  var _index = 0;
+  final _apalah = const [
     {
       "soal": "Ayam apa yang bikin sebel?",
       "jawaban": [
@@ -34,6 +37,22 @@ class _GameState extends State<Game> {
       "jawaban": ['Jendela', 'dua']
     }
   ];
+
+  Function _resetIndex() {
+    setState(() {
+      _index = 0;
+    });
+  }
+
+  void _lanjutPertanyaan() {
+    setState(() {
+      _index += 1;
+    });
+    if (_index < _apalah.length) {
+      print("oke");
+    }
+  }
+
   @override
   // cara mengambil data nama = widget.nama
   Widget build(BuildContext context) {
@@ -57,17 +76,24 @@ class _GameState extends State<Game> {
           margin: EdgeInsets.only(top: 40),
           child: Column(
             children: <Widget>[
+              Pertanyaan(_apalah[_index]["soal"], _index + 1),
               Container(
-                child: Text(
-                  "Soal 1: 湿地板",
-                  style: TextStyle(
-                    height: 4,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w700,
-                  ),
-                  textAlign: TextAlign.center,
+                margin: EdgeInsets.only(top: 60),
+                padding: EdgeInsets.only(
+                  left: 40,
+                  right: 40,
                 ),
-              )
+                height: 200,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    ...(_apalah[_index]['jawaban'] as List<String>)
+                        .map((jawaban) {
+                      return Jawaban(jawaban, _lanjutPertanyaan);
+                    }),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
