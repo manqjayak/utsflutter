@@ -6,7 +6,7 @@ import 'hasil.dart';
 class Game extends StatefulWidget {
   String nama;
 
-  Game(this.nama);
+  Game({this.nama});
   @override
   _GameState createState() => _GameState();
 }
@@ -84,13 +84,9 @@ class _GameState extends State<Game> {
   var _benar = [];
   void _lanjutPertanyaan(String benar) {
     _benar.add(benar);
-    print(_benar);
     setState(() {
       _index += 1;
     });
-    if (_index < _apalah.length) {
-      print("oke");
-    }
   }
 
   Function _resetSoal() {

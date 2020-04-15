@@ -72,8 +72,12 @@ class Hasil extends StatelessWidget {
               ),
               RaisedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (content) => Game(nama)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (content) => Game(
+                                nama: nama,
+                              )));
                 },
                 padding: EdgeInsets.all(8.0),
                 color: Colors.red[200],

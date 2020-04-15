@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'about.dart';
 import 'game.dart';
 
@@ -27,7 +26,7 @@ class _MyAppState extends State<MyApp> {
           children: <Widget>[
             Container(
               width: double.infinity,
-              height: 605,
+              height: 604,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -80,7 +79,9 @@ class _MyAppState extends State<MyApp> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Game(_nama)),
+                                          builder: (context) => Game(
+                                                nama: _nama,
+                                              )),
                                     );
                                   },
                                   padding: EdgeInsets.only(top: 10, bottom: 10),
